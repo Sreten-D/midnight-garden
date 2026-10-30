@@ -1,3 +1,86 @@
 @use "./variables.scss" as *;
 
-// put your custom CSS here!
+// The Midnight Garden of Unfinished Questions: custom look
+
+// Reading comfort: book-like rhythm
+body {
+  line-height: 1.75;
+}
+
+article p,
+article li {
+  font-size: 1.06rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+article > h1,
+.article-title {
+  font-size: 2.5rem;
+  line-height: 1.15;
+}
+
+article blockquote {
+  border-left: 3px solid var(--secondary);
+}
+
+// A faint night sky behind the dark theme
+:root[saved-theme="dark"] body {
+  background-image:
+    radial-gradient(1200px 600px at 85% -10%, rgba(143, 184, 216, 0.08), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, rgba(227, 185, 92, 0.06), transparent 60%);
+  background-attachment: fixed;
+}
+
+// The list of texts only belongs on the home page
+body:not([data-slug="index"]) .recent-notes {
+  display: none;
+}
+
+// Texts as cards on the home page
+.recent-notes {
+  margin-top: 2rem;
+
+  h3 {
+    margin-bottom: 1rem;
+  }
+
+  .recent-ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .recent-li {
+    border: 1px solid var(--lightgray);
+    border-radius: 14px;
+    padding: 1.1rem 1.3rem;
+    transition:
+      border-color 0.2s ease,
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+
+    &:hover {
+      border-color: var(--secondary);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+    }
+
+    h3 {
+      margin: 0 0 0.3rem 0;
+      font-size: 1.35rem;
+    }
+
+    p {
+      margin: 0.2rem 0;
+    }
+  }
+}
