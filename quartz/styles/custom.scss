@@ -1,4 +1,4 @@
-@use "./variables.scss" as *;
+﻿@use "./variables.scss" as *;
 
 // The Midnight Garden of Unfinished Questions: custom look
 
@@ -57,7 +57,7 @@ body {
   background-color: var(--light);
   background-image:
     linear-gradient(rgba(6, 9, 24, 0.05), rgba(6, 9, 24, 0.2)),
-    url("/static/img/garden-night.jpg");
+    url("/static/img/garden-mystic.jpg");
   background-size: cover;
   background-position: center bottom;
   background-attachment: fixed;
@@ -100,7 +100,7 @@ body:not([data-slug="index"]) .sidebar.left {
   body {
     background-image:
       linear-gradient(rgba(250, 246, 238, 0.9), rgba(250, 246, 238, 0.96)),
-      url("/static/img/garden-night.jpg");
+      url("/static/img/garden-mystic.jpg");
   }
 
   body:not([data-slug="index"]) .sidebar.right,
