@@ -5,6 +5,9 @@
 // ---------- Bigger, fuller type ----------
 html {
   font-size: 112.5%;
+  // the base style makes the page 100vw wide, which hides 15px under the scrollbar
+  // and throws off anything lined up with the fixed garden picture
+  width: 100%;
 }
 
 body {
@@ -57,7 +60,7 @@ body {
   background-color: var(--light);
   background-image:
     linear-gradient(rgba(6, 9, 24, 0.05), rgba(6, 9, 24, 0.2)),
-    url("/static/img/garden-mystic.jpg");
+    url("/static/img/garden-mystic2.jpg");
   background-size: cover;
   background-position: center bottom;
   background-attachment: fixed;
@@ -100,7 +103,7 @@ body:not([data-slug="index"]) .sidebar.left {
   body {
     background-image:
       linear-gradient(rgba(250, 246, 238, 0.9), rgba(250, 246, 238, 0.96)),
-      url("/static/img/garden-mystic.jpg");
+      url("/static/img/garden-mystic2.jpg");
   }
 
   body:not([data-slug="index"]) .sidebar.right,
@@ -240,33 +243,42 @@ body[data-slug="index"] {
 }
 
 // A realistic, textured moon with a soft halo
+// The header moon sits exactly where the moon in the garden picture hangs
+// (the picture is 2400x1350, covers the screen, anchored bottom-centre; its moon is
+// centred at 480,126 and is 160 wide), so when the header scrolls away the garden's
+// moon is revealed in the very same spot.
+.hero {
+  container-type: inline-size;
+}
+
 .hero-halo {
+  --s: max(calc(100cqw / 2400), calc(100vh / 1350));
   position: absolute;
-  top: 0%;
-  right: 0%;
-  width: clamp(220px, 22vw, 400px);
+  left: calc((100cqw - 2400 * var(--s)) / 2 + (480 - 210) * var(--s));
+  top: calc(100vh - 1350 * var(--s) + (126 - 210) * var(--s));
+  width: calc(420 * var(--s));
   aspect-ratio: 1;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 243, 214, 0.28) 0%, rgba(255, 243, 214, 0.1) 35%, transparent 68%);
+  background: radial-gradient(circle, rgba(255, 243, 214, 0.2) 0%, rgba(255, 243, 214, 0.07) 38%, transparent 68%);
   pointer-events: none;
 }
 
 .hero-moon {
+  --s: max(calc(100cqw / 2400), calc(100vh / 1350));
+  margin: 0;
+  pointer-events: none;
   position: absolute;
-  top: calc(0% + clamp(220px, 22vw, 400px) / 2 - clamp(45px, 4.8vw, 85px));
-  right: calc(0% + clamp(220px, 22vw, 400px) / 2 - clamp(45px, 4.8vw, 85px));
-  width: clamp(90px, 9.6vw, 170px);
+  left: calc((100cqw - 2400 * var(--s)) / 2 + (480 - 80) * var(--s));
+  top: calc(100vh - 1350 * var(--s) + (126 - 80) * var(--s));
+  width: calc(160 * var(--s));
   height: auto;
-  filter: drop-shadow(0 0 22px rgba(255, 244, 214, 0.45));
-  opacity: 0.97;
-  animation: float 10s ease-in-out infinite alternate;
 }
 
-// A very bright star with diffraction spikes
+// A very bright star with diffraction spikes (in the moon's old corner)
 .hero-bigstar {
   position: absolute;
-  left: 9%;
-  top: 13%;
+  right: calc(11vw - clamp(45px, 5.5vw, 100px));
+  top: calc(11vw - clamp(45px, 5.5vw, 100px));
   width: clamp(90px, 11vw, 200px);
   height: auto;
   filter: drop-shadow(0 0 14px rgba(190, 215, 255, 0.9));
@@ -478,8 +490,8 @@ body[data-slug="index"] {
   }
 
   .hero-bigstar {
-    left: 6%;
-    top: 14%;
+    right: 6%;
+    top: 4%;
   }
 }
 
