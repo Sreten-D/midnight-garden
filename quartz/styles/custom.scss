@@ -56,11 +56,27 @@ article blockquote {
 body {
   background-color: var(--light);
   background-image:
-    linear-gradient(rgba(12, 16, 34, 0.42), rgba(12, 16, 34, 0.7)),
+    linear-gradient(rgba(6, 9, 24, 0.05), rgba(6, 9, 24, 0.2)),
     url("/static/img/garden-night.jpg");
   background-size: cover;
   background-position: center bottom;
   background-attachment: fixed;
+}
+
+// Home page welcome line: soft italic, floating on the garden
+body[data-slug="index"] .markdown-preview-view > p {
+  font-style: italic;
+  font-family: var(--headerFont);
+  font-size: 1.6rem;
+  line-height: 1.6;
+  text-align: center;
+  color: #f3ead2;
+  background: rgba(8, 12, 30, 0.55);
+  backdrop-filter: blur(6px);
+  border-radius: 18px;
+  padding: 1.4rem 1.8rem;
+  margin-top: 1.6rem;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);
 }
 
 // Text pages: the reading area floats on a soft night-glass panel
@@ -184,27 +200,25 @@ body[data-slug="index"] {
   position: relative;
   width: 100%;
   margin: 0;
-  min-height: 92vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   overflow: hidden;
-  background:
-    radial-gradient(ellipse at 50% 125%, rgba(227, 185, 92, 0.3), transparent 55%),
-    linear-gradient(180deg, rgba(8, 10, 28, 0.12), rgba(12, 16, 34, 0.5)),
-    url("/static/img/hero-sky.jpg");
-  background-size: cover;
-  background-position: center 38%;
 
-  &::after {
+  // The sky fades out into the garden that lives behind the page
+  &::before {
     content: "";
     position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 34%;
-    background: linear-gradient(to bottom, transparent, rgba(12, 16, 34, 0.96));
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(8, 10, 28, 0.1), rgba(12, 16, 34, 0.35)),
+      url("/static/img/hero-sky.jpg");
+    background-size: cover;
+    background-position: center 38%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 52%, rgba(0, 0, 0, 0.55) 78%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 52%, rgba(0, 0, 0, 0.55) 78%, transparent 100%);
     pointer-events: none;
   }
 }
@@ -454,7 +468,7 @@ body[data-slug="index"] {
 
 @media (max-width: 800px) {
   .hero {
-    min-height: 82vh;
+    min-height: 74vh;
   }
 
   .hero-constellation {
