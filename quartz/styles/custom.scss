@@ -60,7 +60,7 @@ body {
   background-color: var(--light);
   background-image:
     linear-gradient(rgba(6, 9, 24, 0.05), rgba(6, 9, 24, 0.2)),
-    url("/static/img/garden-mystic2.jpg");
+    url("/static/img/garden-mystic3.jpg");
   background-size: cover;
   background-position: center bottom;
   background-attachment: fixed;
@@ -103,7 +103,7 @@ body:not([data-slug="index"]) .sidebar.left {
   body {
     background-image:
       linear-gradient(rgba(250, 246, 238, 0.9), rgba(250, 246, 238, 0.96)),
-      url("/static/img/garden-mystic2.jpg");
+      url("/static/img/garden-mystic3.jpg");
   }
 
   body:not([data-slug="index"]) .sidebar.right,
@@ -245,7 +245,7 @@ body[data-slug="index"] {
 // A realistic, textured moon with a soft halo
 // The header moon sits exactly where the moon in the garden picture hangs
 // (the picture is 2400x1350, covers the screen, anchored bottom-centre; its moon is
-// centred at 480,126 and is 160 wide), so when the header scrolls away the garden's
+// centred at 480,405 and is 160 wide), so when the header scrolls away the garden's
 // moon is revealed in the very same spot.
 .hero {
   container-type: inline-size;
@@ -255,7 +255,7 @@ body[data-slug="index"] {
   --s: max(calc(100cqw / 2400), calc(100vh / 1350));
   position: absolute;
   left: calc((100cqw - 2400 * var(--s)) / 2 + (480 - 210) * var(--s));
-  top: calc(100vh - 1350 * var(--s) + (126 - 210) * var(--s));
+  top: calc(100vh - 1350 * var(--s) + (405 - 210) * var(--s));
   width: calc(420 * var(--s));
   aspect-ratio: 1;
   border-radius: 50%;
@@ -269,7 +269,7 @@ body[data-slug="index"] {
   pointer-events: none;
   position: absolute;
   left: calc((100cqw - 2400 * var(--s)) / 2 + (480 - 80) * var(--s));
-  top: calc(100vh - 1350 * var(--s) + (126 - 80) * var(--s));
+  top: calc(100vh - 1350 * var(--s) + (405 - 80) * var(--s));
   width: calc(160 * var(--s));
   height: auto;
 }
