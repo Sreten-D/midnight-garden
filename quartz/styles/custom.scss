@@ -2,7 +2,11 @@
 
 // The Midnight Garden of Unfinished Questions: custom look
 
-// ---------- Fuller, bolder type ----------
+// ---------- Bigger, fuller type ----------
+html {
+  font-size: 112.5%;
+}
+
 body {
   line-height: 1.8;
   font-weight: 500;
@@ -10,7 +14,7 @@ body {
 
 article p,
 article li {
-  font-size: 1.12rem;
+  font-size: 1.14rem;
   font-weight: 500;
 }
 
@@ -24,17 +28,17 @@ h4 {
 
 article > h1,
 .article-title {
-  font-size: 3rem;
+  font-size: 3.2rem;
   line-height: 1.1;
 }
 
 article h2 {
-  font-size: 2rem;
+  font-size: 2.2rem;
   margin-top: 2.2em;
 }
 
 article h3 {
-  font-size: 1.5rem;
+  font-size: 1.65rem;
 }
 
 article blockquote {
@@ -44,7 +48,7 @@ article blockquote {
 .page-title,
 .page-title a {
   font-weight: 700;
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   line-height: 1.15;
 }
 
@@ -76,20 +80,22 @@ body:not([data-slug="index"]) .sidebar.left {
   align-self: start;
 }
 
-:root[saved-theme="light"] body:not([data-slug="index"]) .sidebar.right,
-:root[saved-theme="light"] body:not([data-slug="index"]) .sidebar.left {
-  background: rgba(250, 246, 238, 0.78);
-}
+:root[saved-theme="light"] {
+  body {
+    background-image:
+      linear-gradient(rgba(250, 246, 238, 0.9), rgba(250, 246, 238, 0.96)),
+      url("/static/img/garden-night.jpg");
+  }
 
-:root[saved-theme="light"] body:not([data-slug="index"]) .center > article {
-  background: rgba(250, 246, 238, 0.82);
-  border-color: rgba(138, 90, 0, 0.18);
-}
+  body:not([data-slug="index"]) .sidebar.right,
+  body:not([data-slug="index"]) .sidebar.left {
+    background: rgba(250, 246, 238, 0.78);
+  }
 
-:root[saved-theme="light"] body {
-  background-image:
-    linear-gradient(rgba(250, 246, 238, 0.9), rgba(250, 246, 238, 0.96)),
-    url("/static/img/garden-night.jpg");
+  body:not([data-slug="index"]) .center > article {
+    background: rgba(250, 246, 238, 0.82);
+    border-color: rgba(138, 90, 0, 0.18);
+  }
 }
 
 #quartz-root,
@@ -97,7 +103,22 @@ body:not([data-slug="index"]) .sidebar.left {
   background: transparent !important;
 }
 
-// ---------- Home page hero: the night sky ----------
+// Text pages: a slim strip of night sky across the top
+body:not([data-slug="index"]) .page::before {
+  content: "";
+  display: block;
+  height: 150px;
+  background:
+    linear-gradient(to bottom, rgba(12, 16, 34, 0.05), rgba(12, 16, 34, 0.92)),
+    url("/static/img/hero-sky.jpg");
+  background-size: cover;
+  background-position: center 30%;
+}
+
+body:not([data-slug="index"]) .page-header {
+  margin-top: 1.4rem;
+}
+// ---------- Home page: layout ----------
 body[data-slug="index"] {
   .page-title {
     display: none;
@@ -158,22 +179,23 @@ body[data-slug="index"] {
   }
 }
 
+// ---------- Home page: the night sky ----------
 .hero {
   position: relative;
   width: 100%;
   margin: 0;
-  min-height: 86vh;
+  min-height: 92vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   overflow: hidden;
   background:
-    radial-gradient(ellipse at 50% 120%, rgba(227, 185, 92, 0.28), transparent 55%),
-    linear-gradient(180deg, rgba(8, 10, 28, 0.2), rgba(12, 16, 34, 0.55)),
+    radial-gradient(ellipse at 50% 125%, rgba(227, 185, 92, 0.3), transparent 55%),
+    linear-gradient(180deg, rgba(8, 10, 28, 0.12), rgba(12, 16, 34, 0.5)),
     url("/static/img/hero-sky.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: center 38%;
 
   &::after {
     content: "";
@@ -181,7 +203,7 @@ body[data-slug="index"] {
     left: 0;
     right: 0;
     bottom: 0;
-    height: 38%;
+    height: 34%;
     background: linear-gradient(to bottom, transparent, rgba(12, 16, 34, 0.96));
     pointer-events: none;
   }
@@ -203,19 +225,74 @@ body[data-slug="index"] {
   animation: twinkle 5s ease-in-out infinite alternate;
 }
 
+// A realistic, textured moon with a soft halo
+.hero-halo {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  width: clamp(220px, 22vw, 400px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 243, 214, 0.28) 0%, rgba(255, 243, 214, 0.1) 35%, transparent 68%);
+  pointer-events: none;
+}
+
 .hero-moon {
   position: absolute;
-  top: 9%;
-  right: 9%;
-  width: clamp(70px, 9vw, 140px);
+  top: calc(0% + clamp(220px, 22vw, 400px) / 2 - clamp(45px, 4.8vw, 85px));
+  right: calc(0% + clamp(220px, 22vw, 400px) / 2 - clamp(45px, 4.8vw, 85px));
+  width: clamp(90px, 9.6vw, 170px);
   height: auto;
-  filter: drop-shadow(0 0 18px rgba(246, 230, 180, 0.65)) drop-shadow(0 0 60px rgba(246, 230, 180, 0.35));
-  animation: float 9s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 22px rgba(255, 244, 214, 0.45));
+  opacity: 0.97;
+  animation: float 10s ease-in-out infinite alternate;
+}
+
+// A very bright star with diffraction spikes
+.hero-bigstar {
+  position: absolute;
+  left: 9%;
+  top: 13%;
+  width: clamp(90px, 11vw, 200px);
+  height: auto;
+  filter: drop-shadow(0 0 14px rgba(190, 215, 255, 0.9));
+  animation: pulse 4.5s ease-in-out infinite;
+}
+
+// Falling stars
+.shooting-star {
+  position: absolute;
+  height: 2px;
+  width: 170px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.95));
+  border-radius: 2px;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.9));
+  opacity: 0;
+  transform: rotate(32deg);
+  pointer-events: none;
+}
+
+.ss1 {
+  top: 10%;
+  left: 62%;
+  animation: shoot 9s ease-in infinite 2s;
+}
+
+.ss2 {
+  top: 26%;
+  left: 40%;
+  animation: shoot 13s ease-in infinite 6s;
+}
+
+.ss3 {
+  top: 6%;
+  left: 24%;
+  animation: shoot 17s ease-in infinite 11s;
 }
 
 .hero-constellation {
   position: absolute;
-  right: 5%;
+  right: 6%;
   bottom: 9%;
   height: 42%;
   width: auto;
@@ -259,7 +336,7 @@ body[data-slug="index"] {
   position: relative;
   z-index: 2;
   padding: 0 1.5rem;
-  max-width: 980px;
+  max-width: 1000px;
 
   p {
     margin: 0;
@@ -269,14 +346,14 @@ body[data-slug="index"] {
 .hero-kicker {
   text-transform: uppercase;
   letter-spacing: 0.4em;
-  font-size: 0.85rem !important;
+  font-size: 0.9rem !important;
   color: #e3b95c;
   margin-bottom: 1.2rem !important;
 }
 
 .hero-title {
   margin: 0 0 1.2rem 0 !important;
-  font-size: clamp(2.6rem, 6.4vw, 5.4rem) !important;
+  font-size: clamp(2.8rem, 6.6vw, 5.8rem) !important;
   line-height: 1.04 !important;
   font-weight: 700 !important;
   color: #f7efd9;
@@ -287,23 +364,63 @@ body[data-slug="index"] {
 
 .hero-tagline {
   font-style: italic;
-  font-size: clamp(1.1rem, 2vw, 1.5rem) !important;
-  color: #dfe6f7;
+  font-size: clamp(1.2rem, 2.1vw, 1.6rem) !important;
+  color: #e6ecfa;
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.8);
 }
 
+.hero-links {
+  margin-top: 1.8rem !important;
+  display: flex;
+  gap: 0.9rem;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  a {
+    display: inline-block;
+    padding: 0.55rem 1.4rem;
+    border: 1px solid rgba(227, 185, 92, 0.75);
+    border-radius: 999px;
+    color: #f7efd9;
+    background: rgba(12, 16, 34, 0.35) !important;
+    backdrop-filter: blur(4px);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: rgba(227, 185, 92, 0.9);
+      color: #0c1022;
+    }
+  }
+}
+
+.hero a,
+.hero a.internal {
+  background: transparent !important;
+  text-decoration: none;
+}
+
 .hero-scroll {
-  margin-top: 2.6rem !important;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2.2rem;
   text-transform: uppercase;
   letter-spacing: 0.35em;
-  font-size: 0.75rem !important;
-  color: rgba(246, 230, 180, 0.8);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fbefc7 !important;
+  text-shadow: 0 0 12px rgba(0, 0, 0, 0.9);
 
-  &::after {
-    content: "\2193";
-    display: block;
-    margin-top: 0.5rem;
-    font-size: 1.2rem;
+  svg {
+    width: 2.6rem;
+    height: 2.6rem;
+    margin-top: 0.4rem;
+    color: #fbefc7;
+    filter: drop-shadow(0 0 10px rgba(251, 239, 199, 0.9));
     animation: bob 1.8s ease-in-out infinite;
   }
 }
@@ -313,40 +430,57 @@ body[data-slug="index"] {
   to { opacity: 1; }
 }
 
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.12); opacity: 1; }
+}
+
 @keyframes float {
   from { transform: translateY(0); }
-  to { transform: translateY(10px); }
+  to { transform: translateY(8px); }
 }
 
 @keyframes bob {
-  0%, 100% { transform: translateY(0); opacity: 0.6; }
-  50% { transform: translateY(8px); opacity: 1; }
+  0%, 100% { transform: translateY(0); opacity: 0.75; }
+  50% { transform: translateY(9px); opacity: 1; }
+}
+
+@keyframes shoot {
+  0% { opacity: 0; transform: rotate(32deg) translateX(0); }
+  2% { opacity: 1; }
+  9% { opacity: 0; transform: rotate(32deg) translateX(520px); }
+  100% { opacity: 0; transform: rotate(32deg) translateX(520px); }
 }
 
 @media (max-width: 800px) {
   .hero {
-    min-height: 78vh;
+    min-height: 82vh;
   }
 
   .hero-constellation {
-    opacity: 0.35;
-    right: 4%;
-    height: 40%;
+    opacity: 0.3;
+    right: 3%;
+    height: 36%;
   }
 
-  .hero-moon {
-    right: 6%;
-    top: 6%;
+  .hero-bigstar {
+    left: 6%;
+    top: 14%;
   }
 }
 
 // ---------- Texts as cards with cover pictures ----------
+// The list of texts only belongs on the home page
+body:not([data-slug="index"]) .recent-notes {
+  display: none;
+}
+
 .recent-notes {
   margin-top: 2rem;
 
   h3 {
     margin-bottom: 1rem;
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   .recent-ul {
@@ -354,13 +488,13 @@ body[data-slug="index"] {
     margin: 0;
     padding: 0;
     display: grid;
-    gap: 1.4rem;
+    gap: 1.6rem;
   }
 
   .recent-li {
     border: 1px solid var(--lightgray);
     border-radius: 16px;
-    padding: 0 0 1.1rem 0;
+    padding: 0 0 1.2rem 0;
     overflow: hidden;
     background: rgba(12, 16, 34, 0.55);
     transition:
@@ -371,8 +505,8 @@ body[data-slug="index"] {
     &::before {
       content: "";
       display: block;
-      height: 190px;
-      margin-bottom: 1rem;
+      height: 220px;
+      margin-bottom: 1.1rem;
       background-size: cover;
       background-position: center;
       background-image: url("/static/img/hero-sky.jpg");
@@ -390,6 +524,15 @@ body[data-slug="index"] {
       background-image: url("/static/img/cover-mind.jpg");
     }
 
+    // The About page is not a text, so it does not get a card
+    &:has(a[href$="about"]) {
+      display: none;
+    }
+
+    &:has(a[href*="smallest-distance"])::before {
+      background-image: url("/static/img/cover-planck.jpg");
+    }
+
     &:hover {
       border-color: var(--secondary);
       transform: translateY(-3px);
@@ -399,19 +542,20 @@ body[data-slug="index"] {
     h3,
     p,
     ul {
-      margin-left: 1.3rem;
-      margin-right: 1.3rem;
+      margin-left: 1.4rem;
+      margin-right: 1.4rem;
     }
 
     h3 {
       margin-top: 0;
       margin-bottom: 0.3rem;
-      font-size: 1.5rem;
+      font-size: 1.75rem;
     }
 
     p {
       margin-top: 0.2rem;
       margin-bottom: 0.2rem;
+      font-size: 1rem;
     }
   }
 }
