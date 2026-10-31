@@ -5,7 +5,7 @@ tags:
   - money
   - crypto
   - technology
-date: 2026-10-19
+date: 2026-10-18
 ---
 
 *Or: why "pyramid scheme" and "the future of finance" are both lazy answers*
