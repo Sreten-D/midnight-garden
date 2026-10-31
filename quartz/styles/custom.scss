@@ -540,7 +540,7 @@ body:not([data-slug="index"]) .recent-notes {
     }
 
     &:has(a[href*="illusion-of-freedom"])::before {
-      background-image: url("/static/img/cover-freedom-dusk.jpg");
+      background-image: url("/static/img/cover-freedom-night.jpg");
     }
 
     &:has(a[href*="crypto-fraud"])::before {
