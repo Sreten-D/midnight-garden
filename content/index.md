@@ -35,4 +35,4 @@ description: "Some of them are silly. All of them are worth asking."
 
 <div id="start"></div>
 
-Welcome. This is a digital garden: a place where questions about money, minds, machines and the universe are allowed to grow, change and stay unfinished. Pick any path you like.
+Welcome. This is a digital garden, a quiet place where questions about the stars, the living world, the human mind, the machines we build and the price of freedom are allowed to grow, change and stay unfinished. Pick any path you like.
