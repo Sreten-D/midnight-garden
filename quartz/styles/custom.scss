@@ -514,7 +514,9 @@ body:not([data-slug="index"]) .recent-notes {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: grid;
+    // oldest text first, so the texts read as a path (flip to `column` for newest first)
+    display: flex;
+    flex-direction: column-reverse;
     gap: 1.6rem;
   }
 
