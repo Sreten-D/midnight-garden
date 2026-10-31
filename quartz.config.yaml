@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
+﻿# yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
   pageTitle: "The Midnight Garden of Unfinished Questions"
   pageTitleSuffix: ""
@@ -33,9 +33,9 @@ configuration:
         light: "#0c1022"
         lightgray: "#1f2744"
         gray: "#4a5578"
-        darkgray: "#c9cfe3"
-        dark: "#f1ead8"
-        secondary: "#e3b95c"
+        darkgray: "#f3e7c4"
+        dark: "#f0c55c"
+        secondary: "#f5cd6b"
         tertiary: "#8fb8d8"
         highlight: rgba(227, 185, 92, 0.12)
         textHighlight: "#e3b95c55"
