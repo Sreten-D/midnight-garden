@@ -242,6 +242,7 @@ plugins:
       limit: 12
       showTags: true
       hideFolderPages: true
+      hideTagPages: true
     layout:
       position: afterBody
       priority: 20

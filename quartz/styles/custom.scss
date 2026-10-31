@@ -552,7 +552,8 @@ body:not([data-slug="index"]) .recent-notes {
     }
 
     // The About page is not a text, so it does not get a card
-    &:has(a[href$="about"]) {
+    &:has(a[href$="about"]),
+    &:has(a[href$="404"]) {
       display: none;
     }
 
